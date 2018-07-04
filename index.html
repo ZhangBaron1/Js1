@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Js test 1</title>
+    <style>
+        #title{
+            overflow: hidden;
+            width: 300px;
+        }
+        #settext{
+            float: left;
+        }
+        #set{
+            width: 80px;
+            height: 20px;
+            line-height: 20px;
+            background: #F00;
+            color: #FFF;
+            display: block;
+            text-align: center;
+            float: right;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            border: 3px solid #000;
+            margin-top: 20px;
+            background: #fff;
+        }
+        #setting{
+            width: 260px;
+            height: 200px;
+            background: #B6B6B6;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 14px;
+            display: none;
+        }
+        span:hover{
+            cursor: default;
+        }
+        #content{
+            width: 240px;
+            height: 180px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+            background: #fff;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+        #setbg,#setw,#seth{
+            overflow: hidden;
+        }
+        #setbg{
+            padding-top: 20px;
+        }
+        .left{
+            display: block;
+            width: 90px;
+            height: 25px;
+            float: left;
+        }
+        .number{
+            float: left;
+            display: block;
+            width: 30px;
+            height: 20px;
+            border: 1px solid #696969;
+            margin: 0 3px;
+            font-size: 10px;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            background: #b8b8b8;
+        }
+        .number:hover{
+            background: #292929;
+        }
+        #red,#yellow,#blue{
+            float: left;
+            display: block;
+            color: #fff;
+            width: 30px;
+            height: 20px;
+            margin: 0 5px;
+            text-align: center;
+            line-height: 20px;
+        }
+        #red{
+            background: lawngreen;
+        }
+        #red:hover{
+            background: red;
+            border: 1px solid #000;
+        }
+        #yellow{
+            background: #fff78e;
+        }
+        #yellow:hover{
+            background: yellow;
+            border: 1px solid #000;
+        }
+        #blue{
+            background: #5a5d8d;
+        }
+        #blue:hover{
+            background: blue;
+            border: 1px solid #000;
+        }
+        #cancleOk{
+        }
+        .btn{
+            display: block;
+            width: 50px;
+            height: 25px;
+            background: #0d347f;
+            color: #fff;
+            float: left;
+            margin: 10px 20px;
+            text-align: center;
+            line-height: 25px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var set = document.getElementById('set');
+            var setting = document.getElementById('setting');
+
+            var red = document.getElementById('red');
+            var yellow = document.getElementById('yellow');
+            var blue = document.getElementById('blue');
+            var box = document.getElementById('box');
+            var reset = document.getElementById('reset');
+            var ok = document.getElementById('ok');
+
+            var setw = document.getElementById('setw');
+            var seth = document.getElementById('seth');
+            var wlis = setw.getElementsByClassName('number');
+            var hlis = seth.getElementsByClassName('number');
+            set.onclick = function () {
+                setting.style.display = 'block';
+            };
+            function setColor(color) {
+                box.style.background = color;
+            }
+            red.onclick = function (){
+                setColor('red');
+            };
+            yellow.onclick = function (){
+                setColor('yellow');
+            };
+            blue.onclick = function (){
+                setColor('blue');
+            };
+            for( i in wlis){
+                wlis[i].onclick = function () {
+                    //console.log(this);
+                    box.style.width = this.innerText + 'px';
+                }
+            }
+            for( i in hlis){
+                hlis[i].onclick = function () {
+                    box.style.height = this.innerText + 'px';
+                }
+            }
+            reset.onclick = function () {
+                box.style.height = '100px';
+                box.style.width = '100px';
+                box.style.background = '#fff';
+            }
+            ok.onclick = function () {
+                setting.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="title">
+    <span id="settext">请为下面的DIV设置样式：</span>
+    <span id="set">点击设置</span>
+</div>
+<div id="box"></div>
+<div id="setting">
+    <div id="content">
+        <div id="setbg">
+            <span class="left">请选择背景色:</span>
+            <span id="red">红</span>
+            <span id="yellow">黄</span>
+            <span id="blue">蓝</span>
+        </div>
+        <div id="setw">
+            <span class="left">请选择宽(px):</span>
+            <span class="number">200</span>
+            <span class="number">300</span>
+            <span class="number">400</span>
+        </div>
+        <div id="seth">
+            <span class="left">请选择高(px):</span>
+            <span class="number">200</span>
+            <span class="number">300</span>
+            <span class="number">400</span>
+        </div>
+        <div id="cancleOk">
+            <span id="reset" class="btn">恢复</span>
+            <span id="ok" class="btn">确定</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
